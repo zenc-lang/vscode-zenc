@@ -3,10 +3,10 @@
   "displayName": "Zen C",
   "description": "Language support for Zen C",
   "version": "0.0.2",
-  "publisher": "z-libs",
+  "publisher": "zenc-lang",
   "repository": {
     "type": "git",
-    "url": "https://github.com/z-libs/zenc-vscode"
+    "url": "https://github.com/zenc-lang/vscode-zenc"
   },
   "license": "MIT",
   "engines": {
