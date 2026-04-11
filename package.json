@@ -3,7 +3,7 @@
   "displayName": "Zen C",
   "description": "Language support for Zen C",
   "version": "0.0.3",
-  "publisher": "zenc-lang",
+  "publisher": "z-libs",
   "repository": {
     "type": "git",
     "url": "https://github.com/zenc-lang/vscode-zenc"
