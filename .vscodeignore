@@ -1,11 +1,15 @@
+.github/**
 .vscode/**
 .vscode-test/**
 out/test/**
+out/extension.js
+out/extension.js.map
 src/**
 tsconfig.json
 package-lock.json
 .gitignore
 vsc-extension-quickstart.md
 **.map
+node_modules/**
 node_modules/typescript/**
 node_modules/@types/**

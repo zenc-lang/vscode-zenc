@@ -6,9 +6,9 @@ import {
     Executable
 } from 'vscode-languageclient/node';
 
-let client: LanguageClient;
+let client: LanguageClient | undefined;
 
-export function activate(context: vscode.ExtensionContext) {
+function createClient(): LanguageClient {
     const config = vscode.workspace.getConfiguration('zenc');
     const serverPath = config.get<string>('serverPath') || 'zc';
 
@@ -20,38 +20,63 @@ export function activate(context: vscode.ExtensionContext) {
         }
     };
 
-    // If the extension is launched in debug mode then the debug server options are used
-    // Otherwise the run options are used
     const serverOptions: ServerOptions = {
         run,
         debug: run
     };
 
-    // Options to control the language client
     const clientOptions: LanguageClientOptions = {
-        // Register the server for plain text documents
         documentSelector: [{ scheme: 'file', language: 'zenc' }],
         synchronize: {
-            // Notify the server about file changes to '.clientrc files contained in the workspace
             fileEvents: vscode.workspace.createFileSystemWatcher('**/.clientrc')
         }
     };
 
-    // Create the language client and start the client.
-    client = new LanguageClient(
+    return new LanguageClient(
         'zenc',
         'Zen C Language Server',
         serverOptions,
         clientOptions
     );
+}
 
-    // Start the client. This will also launch the server
-    client.start();
+async function startClient() {
+    if (client) {
+        return;
+    }
+
+    client = createClient();
+    await client.start();
+}
+
+async function restartClient() {
+    const oldClient = client;
+    client = undefined;
+
+    if (oldClient) {
+        await oldClient.stop();
+    }
+
+    await startClient();
+    void vscode.window.showInformationMessage('Zen C Language Server restarted.');
+}
+
+export function activate(context: vscode.ExtensionContext) {
+    context.subscriptions.push(
+        vscode.commands.registerCommand('zenc.restartLanguageServer', async () => {
+            await restartClient();
+        })
+    );
+
+    void startClient();
 }
 
 export function deactivate(): Thenable<void> | undefined {
     if (!client) {
         return undefined;
     }
-    return client.stop();
+
+    const oldClient = client;
+    client = undefined;
+    return oldClient.stop();
 }
