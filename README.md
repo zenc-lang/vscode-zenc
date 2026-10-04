@@ -5,6 +5,7 @@ This extension provides language support for the [Zen C](https://github.com/zenc
 ## Features
 
 -   **Syntax Highlighting**: Colorization for keywords, types, functions, strings, and comments.
+-   **Markdown Preview**: Zen C syntax highlighting for fenced `zenc` code blocks in the built-in Markdown preview.
 -   **IntelliSense**: Code completion for local variables, function arguments, and struct fields.
 -   **Hover**: Documentation and type information on hover.
 -   **Go to Definition**: Navigate to symbol definitions.
@@ -13,6 +14,8 @@ This extension provides language support for the [Zen C](https://github.com/zenc
 ## Requirements
 
 You must have the Zen C compiler (`zc`) installed and available in your system path.
+
+In Markdown files, tag code fences with `zenc` and open the preview with **Ctrl+Shift+V**. If the extension was installed or updated while VS Code was open, run **Developer: Reload Window** once.
 
 ## Installation
 

@@ -5,10 +5,11 @@ import {
     ServerOptions,
     Executable
 } from 'vscode-languageclient/node';
+import { createMarkdownPreviewApi } from './markdownPreview';
 
 let client: LanguageClient;
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
     const config = vscode.workspace.getConfiguration('zenc');
     const serverPath = config.get<string>('serverPath') || 'zc';
 
@@ -46,7 +47,8 @@ export function activate(context: vscode.ExtensionContext) {
     );
 
     // Start the client. This will also launch the server
-    client.start();
+    await client.start();
+    return createMarkdownPreviewApi(context);
 }
 
 export function deactivate(): Thenable<void> | undefined {

@@ -1,0 +1,71 @@
+body.vscode-light .zenc-code {
+    background-color: #f6f8fa;
+    color: #24292f;
+}
+
+body.vscode-dark .zenc-code,
+body.vscode-high-contrast .zenc-code {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+}
+
+.zenc-code {
+    overflow-x: auto;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+.zenc-keyword {
+    color: #af00db;
+}
+
+body.vscode-dark .zenc-keyword,
+body.vscode-high-contrast .zenc-keyword {
+    color: #c586c0;
+}
+
+.zenc-string {
+    color: #a31515;
+}
+
+body.vscode-dark .zenc-string,
+body.vscode-high-contrast .zenc-string {
+    color: #ce9178;
+}
+
+.zenc-comment {
+    color: #008000;
+}
+
+body.vscode-dark .zenc-comment,
+body.vscode-high-contrast .zenc-comment {
+    color: #6a9955;
+}
+
+.zenc-type {
+    color: #267f99;
+}
+
+body.vscode-dark .zenc-type,
+body.vscode-high-contrast .zenc-type {
+    color: #4ec9b0;
+}
+
+.zenc-function {
+    color: #795e26;
+}
+
+body.vscode-dark .zenc-function,
+body.vscode-high-contrast .zenc-function {
+    color: #dcdcaa;
+}
+
+.zenc-number,
+.zenc-constant {
+    color: #098658;
+}
+
+body.vscode-dark .zenc-number,
+body.vscode-high-contrast .zenc-number {
+    color: #b5cea8;
+}
